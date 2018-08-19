@@ -63,6 +63,13 @@ CMatrix::CMatrix(long Row, long Col, double ** dArr)
 {
 	this->Row = Row;
 	this->Col = Col;
+
+	this->dArr = new double*[Row];
+	for (long i = 0; i < Row; i++)
+	{
+		this->dArr[i] = new double[Col];
+	}
+
 	for (int i = 0; i < Row; i++)
 	{
 		for (int j = 0; j < Col; j++)
