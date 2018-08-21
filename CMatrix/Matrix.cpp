@@ -1,8 +1,6 @@
 #include "stdafx.h"
 #include "Matrix.h"
 
-
-
 CMatrix::CMatrix(long Row, long Col)
 {
 	this->Row = Row;
@@ -223,20 +221,12 @@ CMatrix CMatrix::Inverse(CMatrix *obj)
 
 CMatrix CMatrix::Transposition(CMatrix *obj)
 {
-	CMatrix Copy(obj);
-	int row = obj->Col;
-	int col = obj->Row;
-	int i, j;
-	Copy.dArr = new double*[row];
-	for (i = 0; i < row; i++)
+	CMatrix Copy(obj->Col,obj->Row);
+	for (int i = 0; i < obj->Row; i++)
 	{
-		Copy.dArr[i] = new double[col];
-	}
-	for (i = 0; i < row; i++)
-	{
-		for (j = 0; j < col; j++)
+		for (int j = 0; j < obj->Col; j++)
 		{
-			Copy.dArr[i][j] = obj->dArr[j][i];
+			Copy.dArr[j][i] = obj->dArr[i][j];
 		}
 	}
 	return Copy;
